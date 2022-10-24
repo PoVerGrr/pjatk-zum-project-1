@@ -1,0 +1,20 @@
+Wstaw x na (1,1)
+Zaznacz o na (2,2)
+Ustaw x na (3,3)
+O na (3,1)
+X na (1,3)
+To teraz o na (1,2)
+Oho! Wygrałem! X na (2,3)
+Poddaję się!
+Nie mam szans.
+Umieść x na (3,2)
+O na (1,2)
+X wstaw na (2,2)
+Umieść o na (3,3)
+X na (3,1)
+O (1,3)
+X (2,3)
+O zaznacz na (2,1)
+Mamy remis! X(1,1)
+(4, 5)
+Wybieram pole nr 3
