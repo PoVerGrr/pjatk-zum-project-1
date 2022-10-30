@@ -1,20 +1,33 @@
+from datetime import date
+
+
+# date support
+def get_date(data_format):
+    return date.today().strftime(data_format)
+
+
+def get_today():
+    data_format = "%m-%d-%Y"
+    return get_date(data_format)
+
+
+def get_current_time():
+    data_format = "%H:%M:%S"
+    return get_date(data_format)
+
+
+# game settings
 PLAYER_X = 'X'
 PLAYER_O = '0'
 PLAYERS = (PLAYER_X, PLAYER_O)
 
+# recording settings
+FREQUENCY = 16000
+DURATION = 5
+CHANNELS = 1
+PATH_LIVE_RECORD = "recordings/live/" + get_today() + "/"
+RECORDING_FORMAT = ".wav"
 
-def coordinates_to_position_in_state(x, y):
-    if (2 < x or x < 0) or (y > 2 or y < 0):
-        raise IndexError
-    return y + (3 * x)
-'''
-elif x == 0:
-    return y
-elif x == 1:
-    return y + 3
-elif x == 2:
-    return y + 6
-'''
 
 class OccupiedExceptions(Exception):
     pass
