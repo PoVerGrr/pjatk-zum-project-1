@@ -1,15 +1,15 @@
 import sounddevice as sd
 import wavio as wv
-
-from tic_tac_toe import common as c
+from tic_tac_toe.common import DURATION, FREQUENCY, CHANNELS, RECORDING_FORMAT, PATH_LIVE_RECORD, get_date
 
 
 def get_voice_file():
     print('recording...')
-    recording = sd.rec(int(c.DURATION * c.FREQUENCY), samplerate=c.FREQUENCY, CHANNELS=c.CHANNELS)
-    path = c.PATH_LIVE_RECORD + "recording" + c.RECORDING_FORMAT
+    recording = sd.rec(int(DURATION * FREQUENCY), samplerate=FREQUENCY, channels=CHANNELS)
+    path = PATH_LIVE_RECORD + get_date() + RECORDING_FORMAT
     sd.wait()
-    wv.write(path, recording, c.FREQUENCY, sampwidth=2)
+    print(path)
+    wv.write(path, recording, FREQUENCY, sampwidth=2)
     print('end of recording')
 
     return path

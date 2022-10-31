@@ -1,19 +1,10 @@
-from datetime import date
+from datetime import datetime
 
 
 # date support
-def get_date(data_format):
-    return date.today().strftime(data_format)
-
-
-def get_today():
-    data_format = "%m-%d-%Y"
-    return get_date(data_format)
-
-
-def get_current_time():
-    data_format = "%H:%M:%S"
-    return get_date(data_format)
+def get_date():
+    date_format = "%Y-%m-%d--%H-%M-%S"
+    return datetime.now().strftime(date_format)
 
 
 # game settings
@@ -21,11 +12,12 @@ PLAYER_X = 'X'
 PLAYER_O = '0'
 PLAYERS = (PLAYER_X, PLAYER_O)
 
+
 # recording settings
 FREQUENCY = 16000
 DURATION = 5
 CHANNELS = 1
-PATH_LIVE_RECORD = "recordings/live/" + get_today() + "/"
+PATH_LIVE_RECORD = "recordings/live/rec-"
 RECORDING_FORMAT = ".wav"
 
 
