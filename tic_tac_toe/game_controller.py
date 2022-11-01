@@ -1,14 +1,13 @@
 import re
 
-from .common import OccupiedExceptions, PLAYERS
+from .common import OccupiedExceptions, PLAYERS, get_word_from_transcription
 import voice_to_file as voice
 
 
 def get_coordinates(current_game):
     try:
         voice_file_path = voice.get_voice_file()
-        transcription = "12"
-
+        transcription = "trzytrzy" #TODO: get from ML
         position = get_values_from_voice(transcription, current_game)
 
         return position
@@ -22,7 +21,6 @@ def get_coordinates(current_game):
     except IndexError:
         print('Coordinates should be from 1 to 3.')
         get_coordinates(current_game)
-#TODO add default exception
 
 
 def get_values_from_voice(transcription, game):
@@ -34,14 +32,11 @@ def get_values_from_voice(transcription, game):
 
 
 def valid_transcription(transcription):
-    #TODO: add pattern realated to 'jeden' 'dwa' trzy'
-    pattern = r'\d'
-    match = re.search(pattern, transcription)
-    print(transcription)
-    if match:
-        x = int(match.group())
-        y = int(match.group())
-        print("X=",str(x),"y=",str(y))
+    pattern = 'jeden|dwa|trzy'
+    match = re.findall(pattern, transcription)
+    if len(match) >= 2:
+        x = int(get_word_from_transcription(match[0])) - 1
+        y = int(get_word_from_transcription(match[1])) - 1
     else:
         raise ValueError
     if (2 < x or x < 0) or (y > 2 or y < 0):

@@ -6,6 +6,16 @@ def get_date():
     date_format = "%Y-%m-%d--%H-%M-%S"
     return datetime.now().strftime(date_format)
 
+def get_word_from_transcription(word):
+    if word == "jeden":
+        return 1
+    elif word == "dwa":
+        return 2
+    elif word == "trzy":
+        return 3
+    else:
+        raise Exception("Application error")
+
 
 # game settings
 PLAYER_X = 'X'

@@ -8,8 +8,8 @@ def get_voice_file():
     recording = sd.rec(int(DURATION * FREQUENCY), samplerate=FREQUENCY, channels=CHANNELS)
     path = PATH_LIVE_RECORD + get_date() + RECORDING_FORMAT
     sd.wait()
-    print(path)
     wv.write(path, recording, FREQUENCY, sampwidth=2)
+    print("recording save path: " + path)
     print('end of recording')
 
     return path
