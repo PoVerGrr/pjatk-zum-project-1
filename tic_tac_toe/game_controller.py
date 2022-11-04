@@ -1,26 +1,26 @@
 import re
-
+from ml import speech_recognition
 from .common import OccupiedExceptions, PLAYERS, get_word_from_transcription
 import voice_to_file as voice
 
 
 def get_coordinates(current_game):
-    try:
-        voice_file_path = voice.get_voice_file()
-        transcription = "trzytrzy" #TODO: get from ML
-        position = get_values_from_voice(transcription, current_game)
+    while True:
+        try:
+            voice_file_path = voice.get_voice_file()
+            transcription = speech_recognition(voice_file_path) #TODO: get from ML
+            position = get_values_from_voice(transcription, current_game)
+            return position
 
-        return position
-
-    except ValueError:
-        print('You should enter two numbers from 1 to 3 separated by white space.')
-        get_coordinates(current_game)
-    except OccupiedExceptions:
-        print('This cell is occupied. Choose another one.')
-        get_coordinates(current_game)
-    except IndexError:
-        print('Coordinates should be from 1 to 3.')
-        get_coordinates(current_game)
+        except ValueError:
+            # print('You should enter two numbers from 1 to 3 separated by white space.')
+            print('Try again\n')
+        except OccupiedExceptions:
+            print('This cell is occupied')
+            print('Try again\n')
+        except IndexError:
+            #print('Coordinates should be from 1 to 3.')
+            print('Try again\n')
 
 
 def get_values_from_voice(transcription, game):

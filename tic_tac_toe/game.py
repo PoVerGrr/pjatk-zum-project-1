@@ -1,6 +1,6 @@
 from .common import PLAYERS, PLAYER_O, PLAYER_X
 from .game_controller import get_coordinates
-
+import time
 
 class Game:
     def __init__(self, initial_state="         "):
@@ -19,11 +19,11 @@ class Game:
         print(self)
 
     def __str__(self):
-        matrix_to_display = '---------\n' + \
-                            '| ' + " ".join(self.state[0:3]) + ' |\n' + \
-                            '| ' + " ".join(self.state[3:6]) + ' |\n' + \
-                            '| ' + " ".join(self.state[6:9]) + ' |\n' + \
-                            '---------'
+        matrix_to_display = '---------    ' + '----------------------\n'\
+                            '| ' + " ".join(self.state[0:3]) + ' |    '+ '| ' + '(1,1)  (1,2)  (1,3)' +' |\n' + \
+                            '| ' + " ".join(self.state[3:6]) + ' |    '+ '| ' + '(2,1)  (2,2)  (2,3)' +' |\n' + \
+                            '| ' + " ".join(self.state[6:9]) + ' |    '+ '| ' + '(3,1)  (3,2)  (3,3)' +' |\n' + \
+                            '---------    ' + '----------------------'
         return matrix_to_display
 
     def is_identical_in_row(self, character, nb_in_row=3):
@@ -55,10 +55,14 @@ class Game:
     def start_game(self):
         print("Game has been started! Good Luck!")
         print(self)
+        time.sleep(1.5)
         i = 0
         while self.check_game_state():
             player = PLAYERS[i % 2]
+            print("Now its", player, "turn.")
             position = get_coordinates(self)
             self.change_state(position, player)
             i += 1
         print("End of the game.")
+
+

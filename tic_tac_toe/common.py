@@ -25,7 +25,7 @@ PLAYERS = (PLAYER_X, PLAYER_O)
 
 # recording settings
 FREQUENCY = 16000
-DURATION = 5
+DURATION = 6
 CHANNELS = 1
 PATH_LIVE_RECORD = "recordings/live/rec-"
 RECORDING_FORMAT = ".wav"
