@@ -11,9 +11,7 @@ def get_voice_file():
     for i in range(55):
         time.sleep(0.1)
         print('.', end='')
-#    sd.wait()
     wv.write(path, recording, FREQUENCY, sampwidth=2)
-#    print("recording save path: " + path)
     print('end of recording')
 
     return path
